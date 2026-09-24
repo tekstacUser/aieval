@@ -1,0 +1,475 @@
+===============================================================================
+STRICT PROMPT ENGINEERING EVALUATION
+HANDSON: Modulo 4 - Ollama Model Serving with Kubernetes, HPA and Reliability
+===============================================================================
+
+PRIORITY
+
+This file contains the mandatory evaluation rules.
+
+The handson-specific rubric is provided separately in final_rubrics.txt.
+The output structure is provided separately in output_format.txt.
+
+Follow this file first, then apply the criteria defined in final_rubrics.txt.
+
+===============================================================================
+1. EVALUATION SCOPE
+===============================================================================
+
+1. Evaluate ONLY the learner's prompt engineering process for THIS handson.
+
+2. Do NOT evaluate the submitted shell scripts, JSON evidence, incident files,
+   application source/configuration, or other implementation artifacts as
+   prompt-engineering quality.
+
+3. Do NOT award prompt-engineering marks based on:
+   - Evidence files being technically correct
+   - Successful execution of validation scripts
+   - Successful incident creation
+   - Correct security findings
+   - Correct ITSM values
+   - Program/application health
+   - Final operational outcome
+   - Source-code or script quality
+
+4. Submitted solution/evidence artifacts may be used only for traceability when
+   the handson-specific rubric explicitly requires it.
+
+5. Evaluate only evidence explicitly present in the learner's prompt history.
+
+6. NEVER infer missing prompts, learner intent, refinement, collaboration,
+   requirements understanding, or prompt quality.
+
+===============================================================================
+2. PROMPT HISTORY SOURCE
+===============================================================================
+
+Use the following sources in this order:
+
+1. prompt_summary.json, if available and contains actual learner prompt history.
+2. Otherwise chatlog.txt.
+
+Prompt history means actual learner/AI interaction or learner prompts.
+
+Do NOT treat the following as prompt history:
+
+- Submitted evidence JSON
+- Generated scripts or configuration
+- Generated solution
+- Evaluation rubric
+- System prompt
+- strict_md.txt
+- final_rubrics.txt
+- output_format.txt
+- Automatically generated evaluation results
+- Program output
+- Validation logs
+- Compilation/execution logs
+- AI-generated content without an identifiable learner prompt
+
+===============================================================================
+3. PROMPT HISTORY GATE
+===============================================================================
+
+Before evaluating ANY rubric criterion, determine whether sufficient,
+relevant learner prompt history exists.
+
+If prompt_summary.json and chatlog.txt are both:
+
+- Missing
+- Empty
+- Blank
+- Contain no actual learner prompts
+- Contain only unrelated content
+- Contain only system/generated content
+
+then:
+
+- Overall prompt-engineering score MUST be 0.
+- Every testcase MUST receive 0.
+- Do NOT award partial marks.
+- Do NOT infer any missing evidence.
+- Do NOT evaluate the quality of the submitted solution/evidence.
+- Do NOT assume that correct evidence proves good prompt engineering.
+
+If relevant prompt history exists, continue with the handson-specific rubric in
+final_rubrics.txt.
+
+===============================================================================
+4. RELEVANCE CHECK
+===============================================================================
+
+Prompt history must be relevant to the current handson.
+
+If the learner has prompt history, but the prompts are unrelated to
+"Modulo 4 - Ollama Model Serving with Kubernetes, HPA and Reliability":
+
+- Treat the prompt history as insufficient evidence.
+- Award 0 for the affected criteria.
+- If the entire history is unrelated, overall score MUST be 0.
+
+Do NOT assume that prompts from another lab belong to this handson.
+
+===============================================================================
+5. EVIDENCE-BASED SCORING
+===============================================================================
+
+Award marks ONLY when explicit evidence supports the criterion.
+
+For every testcase:
+
+- Identify the evidence present in the prompt history.
+- Determine which parts of the testcase criteria are demonstrated.
+- Award marks according to the strength and completeness of the evidence.
+- Do NOT automatically award maximum marks because some evidence exists.
+
+IMPORTANT SCORING CLARIFICATION
+
+Missing evidence for one criterion does NOT mean missing evidence for the
+entire testcase.
+
+Evaluate each criterion independently.
+
+For example, if the learner provides one complete prompt that clearly defines
+the security-validation task but does not show iteration:
+
+- Requirement understanding -> score based on evidence.
+- Requirement completeness -> score based on evidence.
+- Prompt clarity -> score based on evidence.
+- Technical/task-specific requirements -> score based on evidence.
+- Refinement/iteration -> 0 if no iteration is explicitly shown.
+- AI collaboration/back-and-forth -> 0 if no collaboration is explicitly shown.
+
+Do NOT assign 0 to the entire testcase merely because refinement, iteration,
+or back-and-forth interaction is absent.
+
+The evaluator must distinguish between:
+
+1. No evidence for the testcase -> testcase may receive 0.
+2. Evidence exists, but one criterion is missing -> award partial marks.
+3. Strong single-shot prompt with no iteration -> award marks for all supported
+   criteria and 0 only for iteration/collaboration components that require
+   interaction.
+4. Complete iterative prompt history -> award applicable refinement and
+   collaboration marks supported by evidence.
+
+A single good prompt does NOT automatically justify full marks.
+
+A successful final solution/evidence set does NOT justify prompt-engineering
+marks.
+
+===============================================================================
+6. SCORING BANDS
+===============================================================================
+
+The maximum mark for each testcase is defined by final_rubrics.txt. For Modulo 4, the total maximum is 30 marks.
+
+Use the following general scoring principle.
+
+For a testcase with a maximum of 7 marks:
+
+0     = No evidence, unrelated evidence, or insufficient prompt history.
+
+1-2   = Very weak evidence.
+        Only minimal aspects of the criterion are demonstrated.
+
+3-4   = Partial/moderate evidence.
+        Some important aspects are demonstrated, but significant evidence
+        is missing.
+
+5-6   = Strong evidence.
+        Most important aspects are demonstrated, with minor gaps.
+
+7     = Complete and strong evidence.
+        The prompt history explicitly satisfies the major criteria of the
+        testcase.
+
+For a testcase with a maximum of 6 marks:
+
+0     = No evidence, unrelated evidence, or insufficient prompt history.
+
+1-2   = Very weak evidence.
+
+3-4   = Partial/moderate evidence.
+
+5     = Strong evidence with minor gaps.
+
+6     = Complete and strong evidence satisfying the testcase criteria.
+
+For other maximum marks:
+
+Apply the same principle proportionally based on the testcase maximum defined
+in final_rubrics.txt.
+
+IMPORTANT:
+
+Do NOT use overlapping scoring ranges.
+
+Do NOT give maximum marks unless the complete major criteria are supported
+by explicit evidence.
+
+===============================================================================
+7. MAXIMUM MARK RULE
+===============================================================================
+
+A testcase MUST NOT receive its maximum mark unless the learner's prompt
+history provides strong evidence for the complete major criteria defined in
+final_rubrics.txt.
+
+If only some criteria are demonstrated:
+
+- Award an appropriate partial score.
+- Do not round the score up to the maximum.
+- Use the scoring bands defined above.
+
+Maximum marks indicate complete evidence, not merely a technically good
+prompt or successful evidence artifact.
+
+===============================================================================
+8. TESTCASE INDEPENDENCE
+===============================================================================
+
+Each testcase must be evaluated independently using the criteria defined in
+final_rubrics.txt.
+
+Do NOT transfer marks from one testcase to another.
+
+Evidence satisfying one testcase must not automatically satisfy another
+testcase unless the prompt evidence explicitly supports both criteria.
+
+The number of testcases and their maximum marks are determined by the
+handson-specific final_rubrics.txt.
+
+Do NOT assume that every handson has six testcases.
+
+===============================================================================
+9. PROMPT REFINEMENT AND SINGLE-SHOT PROMPTS
+===============================================================================
+
+Award refinement marks only when the prompt history explicitly shows
+iteration or improvement.
+
+Examples of valid refinement evidence:
+
+- Learner identifies a problem with an earlier prompt.
+- Learner asks the AI to modify or improve a prompt.
+- Learner adds missing evidence requirements.
+- Learner clarifies ambiguity.
+- Learner changes the approach based on an earlier response.
+- Learner requests correction or stronger validation.
+- Learner tightens a security, incident, ITSM, or human-review requirement.
+
+IMPORTANT:
+
+The absence of iteration MUST NOT cause the entire testcase to receive 0.
+
+A valid single-shot prompt may still receive marks for requirement
+understanding, clarity, completeness, constraints, technical requirements,
+and traceability when those criteria are explicitly supported.
+
+If the learner uses only a single prompt and there is no evidence of refinement:
+
+- Award 0 only for the refinement component.
+- Continue evaluating all other applicable components independently.
+- Award marks for valid evidence explicitly present.
+- Do NOT assume a single-shot prompt is poor prompt engineering solely because
+  no iteration occurred.
+
+===============================================================================
+10. AI COLLABORATION AND SINGLE-SHOT PROMPTS
+===============================================================================
+
+Award collaboration marks only when the prompt history explicitly shows
+interaction with the AI.
+
+Valid collaboration evidence may include:
+
+- Follow-up questions
+- Reviewing an AI response
+- Requesting corrections
+- Requesting improvements
+- Iterative evidence development
+- Clarifying AI-generated output
+- Identifying and resolving evidence issues through interaction
+
+TC3 and TC4 must be scored at the individual criterion/component level.
+
+The absence of iteration, refinement, follow-up prompts, or back-and-forth AI
+interaction must NOT cause an entire testcase to receive zero.
+
+If a learner provides a valid single-shot prompt, award marks for every
+criterion explicitly evidenced in that prompt.
+
+Award zero only for the specific criterion for which there is no evidence.
+
+Do not require multiple prompts when the required information is explicitly
+present in a single prompt.
+
+Do not infer evidence from AI responses, generated evidence, execution results,
+or final solution artifacts.
+
+"No iteration" means zero only for the iteration-specific criterion.
+
+The absence of back-and-forth interaction MUST NOT cause the entire testcase
+to receive 0.
+
+If the learner provides a valid single-shot prompt without follow-up
+interaction:
+
+- Award 0 only for collaboration components requiring follow-up.
+- Continue evaluating requirement understanding, prompt quality, completeness,
+  constraints, technical requirements, and other explicitly demonstrated
+  components.
+- Do NOT infer that the learner lacks requirement understanding.
+
+===============================================================================
+11. COMPONENT-LEVEL SCORING
+===============================================================================
+
+Each testcase must be evaluated at the individual criterion/component level.
+
+If a testcase contains multiple components, evaluate each independently.
+
+For example:
+
+- Requirement understanding: evidence present -> award applicable marks.
+- Technical/task requirements: evidence present -> award applicable marks.
+- Prompt clarity/completeness: evidence present -> award applicable marks.
+- Refinement/iteration: no evidence -> award 0 for this component only.
+- AI collaboration/back-and-forth: no evidence -> award 0 for this component
+  only.
+
+Do NOT convert missing evidence for one component into a 0 for the entire
+testcase.
+
+A testcase should receive 0 only when there is no meaningful evidence for the
+testcase as a whole, prompt history is missing/empty, or the evidence is
+unrelated to the testcase.
+
+===============================================================================
+12. REQUIREMENT UNDERSTANDING
+===============================================================================
+
+Award requirement-understanding marks only when the learner's prompt history
+explicitly demonstrates understanding of the Modulo 4 requirements.
+
+Evidence may include:
+
+- Identifying the build-validation objective.
+- Identifying security-validation requirements.
+- Identifying the need to document a finding.
+- Identifying the existing incident INC-2031.
+- Identifying correlation and duplicate-incident prevention.
+- Identifying triage requirements.
+- Identifying ITSM fields.
+- Identifying ownership/routing requirements.
+- Identifying human-in-the-loop validation.
+- Identifying evidence-file and transcript requirements.
+- Identifying credential/token safety constraints.
+- Breaking the task into logical steps.
+- Clarifying expected behavior.
+
+Do NOT infer understanding from submitted evidence artifacts.
+
+===============================================================================
+13. SOLUTION TRACEABILITY
+===============================================================================
+
+If the handson-specific rubric contains a solution-traceability criterion:
+
+- Evaluate only the consistency between the learner's recorded prompts and
+  the submitted evidence/solution.
+- Do NOT judge whether the submitted evidence is technically correct.
+- Do NOT infer missing prompt steps.
+- The prompt history must demonstrate a logical progression toward the
+  submitted solution/evidence.
+
+If there is no evidence connecting the prompt history to the solution/evidence,
+award only the marks supported by explicit evidence.
+
+===============================================================================
+14. FULL SCORE REQUIREMENT
+===============================================================================
+
+The learner can receive the FULL overall prompt-engineering score ONLY when:
+
+- Relevant prompt history exists.
+- The prompt history belongs to this handson.
+- All applicable testcases have sufficient evidence.
+- The major criteria of every testcase are explicitly demonstrated.
+- No marks are being awarded through inference.
+- The maximum-mark conditions in final_rubrics.txt are satisfied.
+
+A technically perfect evidence set with poor or missing prompt history MUST NOT
+receive full prompt-engineering marks.
+
+===============================================================================
+15. EMPTY CHATLOG PROTECTION
+===============================================================================
+
+If chatlog.txt is empty and no usable prompt_summary.json exists:
+
+FINAL PROMPT ENGINEERING SCORE = 0
+
+Every testcase score = 0.
+
+This rule takes precedence over any apparent quality of the submitted
+solution/evidence.
+
+===============================================================================
+16. HANDSON-SPECIFIC RUBRIC
+===============================================================================
+
+Read final_rubrics.txt after applying the rules in this file.
+
+final_rubrics.txt defines:
+
+- Number of testcases
+- Testcase names
+- Testcase criteria
+- Maximum marks
+- Handson-specific evaluation requirements
+
+Do NOT assume testcase count or maximum marks from this file.
+
+===============================================================================
+17. OUTPUT FORMAT
+===============================================================================
+
+After evaluation, follow output_format.txt exactly.
+
+Return ONLY valid JSON.
+
+Do NOT return:
+
+- Markdown
+- Headings
+- Explanations outside JSON
+- Evaluation commentary outside JSON
+- Totals outside the defined JSON structure
+
+The first character must be '{'.
+
+The last character must be '}'.
+
+===============================================================================
+18. FINAL VALIDATION
+===============================================================================
+
+Before returning the result, verify:
+
+1. Prompt history exists and is relevant.
+2. Evidence comes only from the learner's prompt history.
+3. No missing evidence has been inferred.
+4. Testcase count comes from final_rubrics.txt.
+5. Maximum marks come from final_rubrics.txt.
+6. Scores follow the evidence-based scoring bands.
+7. Maximum marks are awarded only for complete evidence.
+8. Empty/missing prompt history results in 0.
+9. Implementation/evidence quality has not improperly influenced prompt-
+   engineering marks.
+10. Output exactly follows output_format.txt.
+
+===============================================================================
+END OF STRICT EVALUATION RULES
+===============================================================================
