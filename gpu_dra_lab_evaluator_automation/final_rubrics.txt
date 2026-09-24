@@ -1,0 +1,180 @@
+===============================================================================
+PROMPT ENGINEERING REVIEW RUBRICS
+HANDSON: GPU Dynamic Resource Allocation (DRA), Scheduling, Quota and Capacity Optimization Lab
+===============================================================================
+
+Total Marks: 30
+
+Purpose
+
+Evaluate ONLY the learner's prompt-engineering process for THIS handson.
+
+The submitted lab implementation/evidence has already been evaluated separately
+for execution and functional requirements.
+
+Do NOT evaluate implementation quality as prompt-engineering quality.
+
+Use the learner's prompt history from:
+
+- chatlog.txt
+
+===============================================================================
+SCORING PRINCIPLE FOR THIS HANDSON
+===============================================================================
+
+For every testcase below, judge how closely the learner's own prompts
+independently specify the requirements of GPU Dynamic Resource Allocation (DRA), Scheduling, Quota and Capacity Optimization Lab.
+
+Close match:
+- Learner prompts state most/all reference-checklist items in their own words,
+  even if phrased differently or spread across several prompts.
+- Award full or near-full marks according to completeness.
+
+Partial match:
+- Learner prompts state some checklist items but miss others, or state them
+  vaguely or rely on AI to supply them unprompted.
+- Award partial marks proportional to the evidence.
+
+No match:
+- Learner prompts do not address the checklist items.
+- Prompt history is missing or unrelated to this handson.
+- Award 0.
+
+Do not reward verbatim copying merely because wording matches the reference.
+Reward evidence that the learner understood and specified the requirement.
+
+===============================================================================
+TEST CASE 1 : REQUIREMENT UNDERSTANDING OF DRA ARCHITECTURE AND RESOURCE FLOW
+===============================================================================
+
+Max Marks : 10
+
+Checks whether the learner's prompts show they understood the DRA resource
+chain BEFORE asking the AI to generate manifests: a driver advertises
+simulated devices, a DeviceClass categorizes them, a ResourceClaim requests
+one, the scheduler places the claiming Pod on a node that can satisfy it,
+and that these are simulated (not physical NVIDIA) GPUs.
+
+Reference checklist:
+
+- Learner's prompts state the end-to-end object flow in their own words:
+  driver/DaemonSet advertises devices via ResourceSlice → DeviceClass
+  categorizes the device type → ResourceClaim requests a device → a Pod
+  references the claim → the scheduler places the Pod only where the claim
+  can be satisfied.
+- Learner's prompts explicitly acknowledge that the GPUs are simulated by
+  the Kubernetes DRA example driver (not real NVIDIA hardware), and that a
+  real GPU Operator deployment is out of scope for this VM.
+- Learner's prompts identify that Kubernetes object names (DaemonSet,
+  DeviceClass, ResourceClaim, namespace, quota) are meant to be discovered
+  dynamically rather than hard-coded, matching how the lab/evaluator treats
+  them.
+- Learner's prompts show understanding of why a specific simulated device
+  count (e.g. NUM_DEVICES) was chosen and what it represents (available
+  GPU-like capacity for the cluster).
+
+===============================================================================
+TEST CASE 2 : PROMPT QUALITY FOR MANIFEST AUTHORING AND TROUBLESHOOTING
+===============================================================================
+
+Max Marks : 10
+
+Checks the quality and specificity of the learner's prompts while asking the
+AI to help author the Kubernetes manifests (driver.yaml, deviceclass.yaml,
+workloads.yaml, quota.yaml) and to debug problems along the way.
+
+Reference checklist:
+
+- Learner's prompts for the driver manifest specify the concrete pieces it
+  needs (namespace, ServiceAccount, ClusterRole/Binding scoped to
+  resourceclaims/resourceslices, the DaemonSet running the example driver
+  image, simulated device count) rather than a vague "deploy a GPU driver".
+- Learner's prompts for the DeviceClass and ResourceClaim manifests specify
+  the actual selector/driver relationship (e.g. a CEL selector matching the
+  driver) and that each claim requests exactly one device from that class.
+- Learner's prompts for the workload Pods specify that each Pod must
+  reference its ResourceClaim through `resourceClaims`/`resources.claims`,
+  not just request the device class informally.
+- When something didn't work (device not advertised, claim stuck pending,
+  pod not scheduling, RBAC denied), the learner's prompts describe the
+  actual symptom/error and ask the AI to help diagnose it, showing real
+  troubleshooting rather than repeating the same prompt.
+
+===============================================================================
+TEST CASE 3 : QUOTA ENFORCEMENT AND CAPACITY OPTIMIZATION REASONING
+===============================================================================
+
+Max Marks : 10
+
+Checks whether the learner's prompts show a deliberate plan to enforce and
+then deliberately tune capacity: setting a ResourceQuota that limits both
+Pods and DRA device consumption, observing a 4th workload get blocked, and
+then reasoning about how to raise capacity to allow it to run.
+
+Reference checklist:
+
+- Learner's prompts describe setting up a ResourceQuota that limits both the
+  number of Pods and the DRA device/resource consumption for the namespace,
+  not just a generic Pod count limit.
+- Learner's prompts show the learner anticipated or investigated a 4th
+  workload/claim being blocked once the quota (and/or device capacity) was
+  exhausted, and correctly reasoned about why it was blocked (quota vs.
+  device capacity vs. scheduling).
+- Learner's prompts describe the two-part fix needed to admit the 4th
+  workload — increasing the simulated device capacity AND increasing the
+  ResourceQuota limits — rather than only changing one of the two.
+- Learner's prompts address verifying the outcome after tuning (confirming
+  the previously blocked claim/workload now allocates and runs), showing a
+  before/after validation mindset rather than assuming the fix worked.
+
+===============================================================================
+GENERAL SCORING RULES
+===============================================================================
+
+Full Marks
+
+- The major criteria are explicitly demonstrated.
+
+Partial Marks
+
+- Learner prompts cover a subset of checklist items.
+- Score proportionally to the fraction and strength of evidence.
+
+Zero Marks
+
+Award 0 for a testcase ONLY when:
+
+- There is no usable learner prompt history; OR
+- The learner's prompt history contains no relevant evidence for that testcase;
+  OR
+- The prompt history is unrelated to this handson.
+
+The following conditions MUST NOT, by themselves, cause the entire testcase
+to receive 0:
+
+- Single-shot prompting.
+- No iteration.
+- No refinement.
+- No follow-up question.
+- No back-and-forth with the AI.
+- No incremental development.
+
+When one of these is absent, award 0 only for the specific scoring component
+that requires that behavior, while continuing to score all other independently
+demonstrated components.
+
+A detailed, valid single-shot prompt can receive marks for requirement
+understanding, prompt quality, technical specificity, and other explicitly
+demonstrated criteria.
+
+Do not infer missing evidence. Score only what is explicitly demonstrated.
+
+===============================================================================
+OUTPUT
+===============================================================================
+
+Generate the evaluation using the JSON structure defined in output_format.txt.
+
+Follow output_format.txt exactly.
+
+Return ONLY valid JSON.

@@ -1,0 +1,52 @@
+Return ONLY valid JSON.
+
+{
+  "expertise": {
+    "name": "Prompt Engineering Review",
+    "testcases": {
+      "testcase": [
+        {
+          "visible": "yes",
+          "name": "",
+          "description": "Observed Evidence: ... Reason for Score: ... Missing Evidence: ...",
+          "shortdescription": "",
+          "maxmark": "0",
+          "score": "0",
+          "status": "pass|fail",
+          "failmessage": ""
+        }
+      ]
+    }
+  }
+}
+
+Rules:
+
+- Return ONLY valid JSON.
+- The first character must be '{'.
+- The last character must be '}'.
+- Do not include markdown, headings, explanations, totals or additional text.
+- One JSON object only.
+
+For every testcase:
+
+- Add the testcase name.
+- Add maxmark.
+- Add score.
+- Set status = "pass" only when score equals maxmark.
+- Otherwise set status = "fail".
+- Include failmessage only when score is less than maxmark.
+
+Description must contain:
+
+- Observed Evidence
+- Reason for Score
+- Missing Evidence
+
+Evaluation Rules:
+
+- Evaluate only the learner's prompt history.
+- Use prompt_summary.json if available; otherwise use chatlog.txt.
+- Do not evaluate COBOL/JCL source code.
+- Do not infer missing prompts.
+- Award marks only for evidence present in the prompt history.
